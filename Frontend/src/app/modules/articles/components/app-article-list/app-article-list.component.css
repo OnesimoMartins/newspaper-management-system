@@ -1,0 +1,12 @@
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+.spaced-button{
+  /* margin-left: 30px; */
+  margin-left: 650px;
+}

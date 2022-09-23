@@ -1,0 +1,50 @@
+<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
+  <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
+      <mat-card>
+          <mat-card-title>Iniciar sessão</mat-card-title>
+          <mat-card-subtitle>insira as suas credenciais.</mat-card-subtitle>
+          <mat-card-content>
+
+              <mat-form-field class="full-width" appearance="standard">
+                  <input id="emailInput" matInput placeholder="Email" formControlName="email" autocomplete='off'
+                      type="email">
+
+                  <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
+                      insira um email válido.
+                  </mat-error>
+
+                  <mat-error id="requiredEmailError" *ngIf="loginForm.controls['email'].hasError('required')">
+                      O endereço de email é  <strong>obrigatório</strong>
+                  </mat-error>
+
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                  <input id="passwordInput" matInput placeholder="Palavra-passe" formControlName="password" type="password"
+                      autocomplete="current-password">
+
+                <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['email'].hasError('required')">
+                      A palavra-passe é<strong> obrigatória</strong>
+                </mat-error>
+
+              </mat-form-field>
+
+              <mat-error *ngIf="invalidCredentialsMessage">
+                {{invalidCredentialsMessage}}
+              </mat-error>
+
+
+
+
+          </mat-card-content>
+
+          <mat-card-actions class="login-actions">
+              <button mat-raised-button id="login" color="primary" [disabled]="loginForm.invalid || loading"
+                  (click)="login()">Entrar</button>
+          </mat-card-actions>
+
+      </mat-card>
+
+      <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar> -->
+  </form>
+</div>

@@ -1,0 +1,46 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+
+    <mat-card>
+
+      <mat-card-title>
+        <h3>Empregados</h3>
+      </mat-card-title>
+
+    <mat-card-subtitle>
+      Lista de empregados jornalistas.
+    </mat-card-subtitle>
+
+      <mat-card-content class="employees-cards" fxLayout="row wrap" fxLayoutgap="840px">
+
+        <div  *ngFor="let item of list">
+
+            <mat-card class="emplyee-card">
+              <mat-card-title>{{item.first_name+' '+item.last_name}}</mat-card-title>
+              <mat-card-subtitle>{{jobTittle}}</mat-card-subtitle>
+
+              <mat-card-content class="emplyee-card-content">
+                <p><strong>Email:</strong> {{item.email}}</p>
+                <p><strong>Data de recrutamento:</strong> {{item.recruitment_date}}</p>
+                <p><strong>Nível de experiência:</strong> {{item.experience_level}}</p>
+              </mat-card-content>
+
+            </mat-card>
+        </div>
+
+      </mat-card-content>
+
+      <mat-paginator
+      [pageSize]="page.size"
+      [length]="page.totalElements"
+      [pageIndex]="page.number"
+      (page)="onPaging($event)">
+      </mat-paginator>
+
+    </mat-card>
+
+
+  </div>
+</div>
+
+

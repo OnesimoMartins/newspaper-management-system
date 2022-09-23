@@ -1,0 +1,19 @@
+password-rules .mat-divider {
+  position: unset !important;
+}
+.container{
+  padding-top: 20px;
+}
+.file-input{
+  margin-top: 13px;
+margin-bottom: 20px;
+}
+
+.file-input button{
+  width: 320px;
+  text-align: left;
+}
+
+.full-width{
+  width: 750px;
+}

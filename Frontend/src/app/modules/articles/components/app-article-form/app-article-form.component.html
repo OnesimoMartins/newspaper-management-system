@@ -1,0 +1,90 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+
+    <mat-card>
+
+      <mat-card-title>
+        <h3>Criar novo artigo</h3>
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        <p>Use o formulário abaixo para criar um novo artigo.</p>
+      </mat-card-subtitle>
+
+      <mat-card-content>
+
+        <form [formGroup]="form">
+
+
+          <div fxLayout="row">
+
+            <div fxFlex="70%" fxFlex.md="60%" fxFlex.sm="50%" fxFlex.xs="100%">
+
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Título do artigo" formControlName="tittle">
+
+                <mat-error *ngIf="form.controls['tittle'].hasError('required')">
+                  O título do artigo é obrigatório.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Resumo" formControlName="summary"></textarea>
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+
+                <mat-label>Categoria </mat-label>
+
+                <mat-select formControlName="category_id">
+                  <mat-option *ngFor="let item of categories" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="form.controls['category_id'].hasError('required')">
+                  Por favor. Forneça uma categoria
+                </mat-error>
+
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Palavras-chave" formControlName="keywords" >
+
+                <mat-error *ngIf="form.controls['keywords'].hasError('required')">
+                  As palavras-chave são obrigatórias.
+                </mat-error>
+              </mat-form-field>
+
+
+              <div class="file-input">
+                <button mat-raised-button placeholder="P" (click)="fileInput.click()">
+                 {{fileSelectText}}
+                </button>
+
+                <input type="file" hidden (change)="onFileSelected()" #fileInput id="file">
+              </div>
+
+              <button mat-raised-button color="primary" [disabled]="form.invalid || disableSubmit || hasNotFile()" (click)="createArticle()">Save</button>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

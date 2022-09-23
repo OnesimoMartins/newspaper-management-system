@@ -1,0 +1,100 @@
+  <div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+
+    <mat-card>
+
+      <mat-card-title>
+        <h3>Artigos</h3>
+      </mat-card-title>
+
+    <mat-card-subtitle>
+    {{getSubtittle()}}
+    </mat-card-subtitle>
+
+      <mat-card-content>
+
+
+         <div class="example-header">
+
+          <mat-form-field appearance="standard">
+            <mat-label>Filtro </mat-label>
+
+          <mat-select [(value)]="filter" (valueChange)="alterFilter()" >
+
+          <mat-option *ngFor="let item of ['Todos','Aprovados','Reprovados','Submetidos']"
+            [value]="item">{{item}}</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+        <a mat-raised-button
+        class="spaced-button"
+         color="primary"
+          routerLink="/artigos/novo"
+         *ngIf="isJournalist()" >
+          <span >
+            criar artigo
+          </span>
+        </a>
+        </div>
+
+        <table mat-table [dataSource]="datasource" matSort>
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
+            <td mat-cell *matCellDef="let article"> {{article.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tittle">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Título </th>
+            <td mat-cell *matCellDef="let article"> {{article.tittle}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="magazine">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Magazine </th>
+            <td mat-cell *matCellDef="let article"> {{article.magazine.name ?? "Sem magazine"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="keywords">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Palavras-chave </th>
+            <td mat-cell *matCellDef="let article"> {{article.keywords}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Acções</th>
+
+            <td mat-cell *matCellDef="let article">
+
+            <a mat-icon-button routerLink="/artigos/{{article.id}}"
+              matTooltip="Ver detalhes">
+              <span fxShow fxHide.xs>
+                <i class="fa-solid fa-eye"></i>
+              </span>
+            </a>
+
+          </td>
+
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="headerColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: headerColumns;"></tr>
+        </table>
+
+        <mat-paginator
+[pageSize]="page.size"
+[length]="page.totalElements"
+[pageIndex]="page.number"
+(page)="onPaging($event)">
+
+       </mat-paginator>
+
+
+      </mat-card-content>
+
+    </mat-card>
+
+
+  </div>
+</div>
+
+

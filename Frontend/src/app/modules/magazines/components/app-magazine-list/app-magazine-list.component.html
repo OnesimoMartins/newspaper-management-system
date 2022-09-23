@@ -1,0 +1,67 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+
+    <mat-card>
+
+      <mat-card-title><h3> Magazines</h3></mat-card-title>
+      <mat-card-subtitle>Todos os magazines do jornal.</mat-card-subtitle>
+      <mat-card-content>
+
+        <table mat-table [dataSource]="datasource" matSort>
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
+            <td mat-cell *matCellDef="let magazine"> {{magazine.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+            <td mat-cell *matCellDef="let magazine"> {{magazine.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="publisher">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Publicador </th>
+            <td mat-cell *matCellDef="let magazine" > {{magazine.publisher.first_name+' '+magazine.publisher.last_name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="last_edition">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Última edição </th>
+            <td mat-cell *matCellDef="let magazine"> {{magazine.last_edition}} </td>
+
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+            <td mat-cell *matCellDef="let magazine">
+
+            <button mat-icon-button (click)="openMagazineDetails(magazine)"
+            matTooltip="Ver detalhes">
+              <span fxShow fxHide.xs>
+                <i class="fa-solid fa-eye"></i>
+              </span>
+            </button>
+
+          </td>
+
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="headerColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: headerColumns;"></tr>
+        </table>
+
+        <mat-paginator
+[pageSize]="page.size"
+[length]="page.totalElements"
+[pageIndex]="page.number"
+(page)="onPaging($event)">
+</mat-paginator>
+
+
+      </mat-card-content>
+    </mat-card>
+
+
+  </div>
+</div>
+
+

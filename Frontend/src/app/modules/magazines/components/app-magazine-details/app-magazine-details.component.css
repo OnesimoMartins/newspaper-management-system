@@ -1,0 +1,21 @@
+.password-rules .mat-divider {
+  position: unset !important;
+}
+.container{
+  padding-top: 20px;
+}
+.profile-card {
+  text-align: center;
+}
+mat-card-content{
+  height: 450px;
+}
+
+.bottom{
+  margin-top: 140px;
+  /* padding-top: 1em;
+  width: 95%;
+  bottom: 0;
+  height: 1px;
+  position: absolute; */
+}

@@ -1,0 +1,23 @@
+hat listing might contain some unfamiliar syntax if you’re new to TypeScript, so let’s 
+take a closer look at each section of the code. First, you import the Component annotation. 
+It’s used to decorate the App component by adding details that are related to the component but aren’t part of its 
+controller logic, which is the AppComponent class. Angular 
+looks at these annotations and uses them with the AppComponent controller class to 
+create the component at runtime.
+The @Component annotation declares that this class is a component by accepting an 
+object. It has a selector property that declares the HTML selector of the component. 
+That means the component is used in the template by adding an HTML tag <app-root>
+</app-root>. 
+The templateUrl property declares a link to a template containing an HTML template. Likewise, 
+the styleUrls property contains an array of links to any CSS files that 
+should be loaded for this component. The @Component annotation can have more 
+properties, and you’ll see a few more in action in this chapter.
+Finally, you see that the AppComponent class has a single property called title. The 
+value is what you should see rendered in the browser, so this is the source of the value 
+that ultimately appears. Angular relies greatly on ES2015 classes to create objects, and 
+almost all entities in Angular are created with classes and annotations.
+Now let’s look at the markup associated with the App component by opening src/
+app/app.component.html, shown here:
+<h1>
+ {{title}}
+</h1>

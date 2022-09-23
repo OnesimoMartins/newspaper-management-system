@@ -1,0 +1,2 @@
+onApproveArticle
+onSetMagazinePublsher

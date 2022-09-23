@@ -1,0 +1,2 @@
+bank analyzer is a program that calculate statics of bank transactios and then exports to a HTML,JSON
+using some of s.o.l.i.d such as open/closed and single responsibility principle

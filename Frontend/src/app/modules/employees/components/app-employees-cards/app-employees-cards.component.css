@@ -1,0 +1,16 @@
+.employees-cards{
+  display: flex;
+  flex-direction: row;
+  height: 600px;
+}
+
+.emplyee-card-content{
+  height: 190px;
+  width: 220px;
+}
+
+.emplyee-card{
+  width: 280px;
+  height: 180px;
+  margin-right: 8px;
+}
